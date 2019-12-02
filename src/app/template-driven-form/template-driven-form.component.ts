@@ -15,7 +15,7 @@ export class TemplateDrivenFormComponent {
   ];
 
   applications = [{ id: 0 }, { id: 1 }, { id: 2 }];
-  
+
   model: Appointment = {
     name: "",
     mail: "",
@@ -25,4 +25,13 @@ export class TemplateDrivenFormComponent {
     application1: false,
     application2: false
   };
+}
+export interface Appointment {
+  name: string;
+  mail: string;
+  dayOfTheWeek: string;
+  office: string;
+  application0: boolean;
+  application1: boolean;
+  application2: boolean;
 }
