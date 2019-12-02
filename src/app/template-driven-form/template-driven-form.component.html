@@ -15,12 +15,27 @@
 			<label for="mail">E-mail</label>
 			<input type="email"
 			class="form-control"
+			[ngClass]= "{
+			'is-invalid': mail.invalid && mail.dirty,
+			'is-valid': mail.valid && mail.dirty
+			}"
 			id="mail"
 			name="mail"
 			placeholder="Inserisci la tua e-mail"
 			[(ngModel)]="model.mail"
+			#mail="ngModel"
 			required
 			pattern="[a-z0-9._%+-]+@[a-z0-9-.]+\.[a-z]{2,}$">
+			<div
+				*ngIf="mail.errors && mail.dirty"
+				class="invalid-feedback">
+				<p *ngIf="mail.errors.pattern" >
+					Formato e-mail non valido
+				</p>
+				<p *ngIf="mail.errors.required" >
+					* Campo obbligatorio
+				</p>
+			</div>
 		</div>
 		<div class="col-md-4 mb-2">
 			<label for="dayOfTheWeek">Giorno della settimana</label>
@@ -64,7 +79,12 @@
 	<div class="form-row">
 		<button
 			type="submit"
-		class="btn btn-primary">Prenota</button>
+			class="btn "
+			[ngClass]="{
+			'btn-secondary': form.invalid,
+			'btn-success': form.valid
+			}"
+		[disabled]="form.invalid">Prenota</button>
 	</div>
 </form>
 <pre>
