@@ -4,3 +4,4 @@ import { Component } from "@angular/core";
   template: "<simple-template-driven-form></simple-template-driven-form>"
 })
 export class AppComponent {}
+

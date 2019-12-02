@@ -25,6 +25,7 @@ export class TemplateDrivenFormComponent {
     application1: false,
     application2: false
   };
+
 }
 export interface Appointment {
   name: string;
