@@ -7,7 +7,9 @@
 			id="name"
 			name="name"
 			placeholder="Inserisci il tuo
-			nome" [(ngModel)]="model.name">
+			nome" [(ngModel)]="model.name"
+			required
+			minlength="2">
 		</div>
 		<div class="col-md-4 mb-2">
 			<label for="mail">E-mail</label>
@@ -16,7 +18,9 @@
 			id="mail"
 			name="mail"
 			placeholder="Inserisci la tua e-mail"
-			[(ngModel)]="model.mail">
+			[(ngModel)]="model.mail"
+			required
+			pattern="[a-z0-9._%+-]+@[a-z0-9-.]+\.[a-z]{2,}$">
 		</div>
 		<div class="col-md-4 mb-2">
 			<label for="dayOfTheWeek">Giorno della settimana</label>
@@ -31,8 +35,7 @@
 		</div>
 	</div>
 	<div class="form-row mt-3 mb-3">
-		<div class="form-check form-check-inline"
-			*ngFor="let office of availableOffices">
+		<div class="form-check form-check-inline" *ngFor="let office of availableOffices">
 			<input type="radio"
 			name="office"
 			id="office-{{ office.id }}"
@@ -45,8 +48,7 @@
 		</div>
 	</div>
 	<div class="form-row mt-3 mb-3">
-		<div class="form-check form-check-inline"
-			*ngFor="let application of applications; let i = index;">
+		<div class="form-check form-check-inline" *ngFor="let application of applications; let i = index;">
 			<input type="checkbox"
 			name="application{{ application.id }}"
 			id="application-{{ application.id }}"
@@ -65,7 +67,24 @@
 		class="btn btn-primary">Prenota</button>
 	</div>
 </form>
-<br>
-	<pre><code>{{ form.value | json }}</code></pre>
-<br>
-	<pre><code>{{ model | json }}</code></pre>
+<pre>
+	<!-- Proprietà del campo di input -->
+	<!-- identificato dall'attributo name="name" -->
+	dirty? {{ form.form.controls.name.dirty }}
+	pristine? {{ form.form.controls.name.pristine }}
+	touched? {{ form.form.controls.name.touched }}
+	untouched? {{ form.form.controls.name.untouched }}
+	valid? {{ form.form.controls.name.valid }}
+	invalid? {{ form.form.controls.name.invalid }}
+</pre>
+
+<pre>
+	<!-- Proprietà del campo di input -->
+	<!-- identificato dall'attributo name="mail" -->
+	dirty? {{ form.controls.mail.dirty }}
+	pristine? {{ form.controls.mail.pristine }}
+	touched? {{ form.controls.mail.touched }}
+	untouched? {{ form.controls.mail.untouched }}
+	valid? {{ form.controls.mail.valid }}
+	invalid? {{ form.controls.mail.invalid }}
+</pre>
