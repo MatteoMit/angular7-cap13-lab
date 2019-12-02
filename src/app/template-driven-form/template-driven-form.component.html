@@ -1,88 +1,71 @@
-<form #form="ngForm" novalidate>
+<form novalidate #form="ngForm">
 	<div class="form-row">
 		<div class="col-md-4 mb-2">
-			<label for="name">Nome </label>
+			<label for="name">Nome</label>
 			<input type="text"
 			class="form-control"
 			id="name"
 			name="name"
-			placeholder="Inserisci il tuo nome"
-      ngModel>
+			placeholder="Inserisci il tuo
+			nome" [(ngModel)]="model.name">
 		</div>
 		<div class="col-md-4 mb-2">
-			<label for="mail">E-mail </label>
+			<label for="mail">E-mail</label>
 			<input type="email"
 			class="form-control"
 			id="mail"
 			name="mail"
 			placeholder="Inserisci la tua e-mail"
-      ngModel>
+			[(ngModel)]="model.mail">
 		</div>
 		<div class="col-md-4 mb-2">
-			<label for="dayOfTheWeek">Giorno della settimana </label>
-			<select name="dayOfTheWeek" id="dayOfTheWeek" class="formcontrol">
-				<option value="0">Luned&igrave;</option>
-				<option value="1">Marted&igrave;</option>
-				<option value="2">Mercoled&igrave;</option>
-				<option value="3">Gioved&igrave;</option>
-				<option value="4">Venerd&igrave;</option>
+			<label for="dayOfTheWeek">Giorno della settimana</label>
+			<select
+				name="dayOfTheWeek"
+				id="dayOfTheWeek"
+				class="form-control"
+				[(ngModel)]="model.dayOfTheWeek">
+				<option *ngFor="let day of daysOfTheWeek"
+				[value]="day">{{ day }}</option>
 			</select>
 		</div>
 	</div>
 	<div class="form-row mt-3 mb-3">
-		<div class="form-check form-check-inline">
+		<div class="form-check form-check-inline"
+			*ngFor="let office of availableOffices">
 			<input type="radio"
 			name="office"
-			id="office-A"
+			id="office-{{ office.id }}"
 			class="form-check-input"
-			value="ufficio_A">
-			<label for="office" class="form-check-label">Ufficio A</label>
-		</div>
-		<div class="form-check form-check-inline">
-			<input type="radio"
-			name="office"
-			id="office-B"
-			class="form-check-input"
-			value="ufficio_B">
-			<label for="office" class="form-check-label">Ufficio B</label>
-		</div>
-		<div class="form-check form-check-inline">
-			<input type="radio"
-			name="office"
-			id="office-C"
-			class="form-check-input"
-			value="ufficio_C">
-			<label for="office" class="form-check-label">Ufficio C</label>
+			value="{{ office.name }}"
+			[(ngModel)]="model.office">
+			<label
+				for="office"
+			class="form-check-label">Ufficio {{ office.id }}</label>
 		</div>
 	</div>
 	<div class="form-row mt-3 mb-3">
-		<div class="form-check form-check-inline">
+		<div class="form-check form-check-inline"
+			*ngFor="let application of applications; let i = index;">
 			<input type="checkbox"
-			name="application1"
-			id="application-1"
+			name="application{{ application.id }}"
+			id="application-{{ application.id }}"
 			class="form-check-input"
-			value="richiesta_1">
-			<label for="application" class="form-check-label">Richiesta 1</label>
-		</div>
-		<div class="form-check form-check-inline">
-			<input type="checkbox"
-			name="application2"
-			id="application-2"
-			class="form-check-input"
-			value="richiesta_2">
-			<label for="application" class="form-check-label">Richiesta 2</label>
-		</div>
-		<div class="form-check form-check-inline">
-			<input type="checkbox"
-			name="application3"
-			id="application-3"
-			class="form-check-input"
-			value="richiesta_3">
-			<label for="application" class="form-check-label">Richiesta 3</label>
+			value="richiesta_{{ application.id }}"
+			[(ngModel)]="model['application' + i]">
+			<label
+				for="application"
+				class="form-check-label">Richiesta {{ application.id
+			}}</label>
 		</div>
 	</div>
 	<div class="form-row">
-		<button type="submit" class="btn btn-primary">Prenota</button>
+		<button
+			type="submit"
+		class="btn btn-primary">Prenota</button>
 	</div>
-  <pre><code>{{ form.value | json }}</code></pre>
 </form>
+<br>
+	<pre><code>{{ form.value | json }}</code></pre>
+<br>
+	<pre><code>{{ model | json }}</code></pre>
