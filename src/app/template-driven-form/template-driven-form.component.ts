@@ -26,6 +26,10 @@ export class TemplateDrivenFormComponent {
     application2: false
   };
 
+  submitForm(form: NgForm) {
+    form.reset();
+    console.log('Form submission');
+  }
 }
 export interface Appointment {
   name: string;
