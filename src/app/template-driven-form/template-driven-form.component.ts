@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Appointment } from "../appointment";
 @Component({
   selector: "simple-template-driven-form",
@@ -26,8 +26,10 @@ export class TemplateDrivenFormComponent {
     application2: false
   };
 
+  @ViewChild('form') form: NgForm;
+  
   submitForm(form: NgForm) {
-    form.reset();
+    this.form.reset();
     console.log('Form submission');
   }
 }
