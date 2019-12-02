@@ -1,4 +1,4 @@
-<form novalidate #form="ngForm">
+<form novalidate #form="ngForm" (ngSubmit)="submitForm()">
 	<div class="form-row">
 		<div class="col-md-4 mb-2">
 			<label for="name">Nome</label>
@@ -79,12 +79,15 @@
 	<div class="form-row">
 		<button
 			type="submit"
-			class="btn "
-			[ngClass]="{
-			'btn-secondary': form.invalid,
-			'btn-success': form.valid
-			}"
-		[disabled]="form.invalid">Prenota</button>
+      class="btn btn-success"
+      [disabled]="form.invalid">Prenota
+    </button>
+    <button
+      type="submit"
+      class="btn btn-danger"
+      (click)="form.reset()"
+      [disabled]="form.invalid">Reset
+    </button>
 	</div>
 </form>
 <pre>
