@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Appointment } from "../appointment";
+
 @Component({
   selector: "simple-template-driven-form",
   templateUrl: "./template-driven-form.component.html",
