@@ -26,7 +26,7 @@ export class TemplateDrivenFormComponent {
     application2: false
   };
 
-  submitForm(form: NgForm) {
+  submitForm(form: any) {
     form.reset();
     console.log('Form submission');
   }
